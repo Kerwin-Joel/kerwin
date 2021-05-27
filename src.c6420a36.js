@@ -13,7 +13,8 @@ let _data = {
     fetch('https://flow.zoho.com/751582577/flow/webhook/incoming?zapikey=1001.8a47203e9a4caa4974147df585f6b47f.192206c45c26fadd5fb75fb7a2e4979a&isdebug=false', {
         method: "POST",
         body: JSON.stringify(_data),
-        headers: {"Content-type": "application/json; charset=UTF-8"}
+        headers: {"Content-type": "application/json; charset=UTF-8"},
+        mode :"no-cors"
     })
     .then(response => response.json()) 
     .then(json => console.log(json))

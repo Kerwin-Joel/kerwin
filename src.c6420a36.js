@@ -4,19 +4,17 @@ var e;function t(e){return(t="function"==typeof Symbol&&"symbol"==typeof Symbol.
 },{}]},{},["RNe0"], null)
 //# sourceMappingURL=/src.c6420a36.js.map
 
-var url = "https://flow.zoho.com/751582577/flow/webhook/incoming?zapikey=1001.8a47203e9a4caa4974147df585f6b47f.192206c45c26fadd5fb75fb7a2e4979a&isdebug=false"; //URL del servidor 
-var params = '{"id":"23e2d223r2r"}'; //PARAMETROS 
-//Abres la conexion  la URL 
-http.open("POST", url, true); 
- 
-//Envias el header requerido para enviar parametros via POST 
-http.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-http.setRequestHeader("Content-length", params.length); 
-http.setRequestHeader("Connection", "close"); 
- 
-http.onreadystatechange = function() {//Llama a la funcion cuando el estado cambia 
-	if(http.readyState == 4 && http.status == 200) { 
-		alert(http.responseText); 
-	} 
-} 
-http.send(params); 
+// data to be sent to the POST request
+let _data = {
+    title: "foo",
+    body: "bar", 
+    userId:1
+    };
+    fetch('https://flow.zoho.com/751582577/flow/webhook/incoming?zapikey=1001.8a47203e9a4caa4974147df585f6b47f.192206c45c26fadd5fb75fb7a2e4979a&isdebug=false', {
+        method: "POST",
+        body: JSON.stringify(_data),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    .then(response => response.json()) 
+    .then(json => console.log(json))
+    .catch(err => console.log(err));
